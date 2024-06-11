@@ -33,6 +33,7 @@ export interface RequestMessage {
  */
 export interface ProviderSettings {
     [k: string]: unknown | undefined
+    contextDepth?: number
 }
 export interface ResponseMessage {
     result?: unknown
