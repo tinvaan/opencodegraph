@@ -25,6 +25,7 @@
   "dependencies": {
     "@openctx/protocol": "workspace:*",
     "@openctx/schema": "workspace:*",
+    "extract-urls": "^1.4.1",
     "picomatch": "^3.0.1"
   },
   "devDependencies": {
