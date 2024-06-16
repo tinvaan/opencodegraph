@@ -3,7 +3,6 @@ import type {
     AnnotationsResult,
     ItemsParams,
     ItemsResult,
-    Mention,
     MentionsParams,
     MentionsResult,
     MetaParams,
@@ -11,27 +10,6 @@ import type {
     ProviderSettings,
 } from '@openctx/protocol'
 
-const extractUrls = require('extract-urls')
-
-export class LinkedContext<S extends {} = ProviderSettings> {
-    contextDepth?: number
-    context?: Provider<ProviderSettings>[]
-
-    constructor(S: ProviderSettings) {
-        this.context = []
-        this.contextDepth = S.contextDepth || 1
-    }
-
-    /**
-     * Populates context with relevant providers from uri's in mention context.
-     */
-    populate?(mention: Mention, settings: S): Provider[] {
-        // TODO: Check if extracted urls match against any providers
-        const urls = extractUrls(mention.data?.content)
-        console.error('urls = ', urls)
-        return []
-    }
-}
 
 /**
  * An OpenCtx provider implemented in TypeScript/JavaScript.
@@ -62,10 +40,3 @@ export interface Provider<S extends {} = ProviderSettings> {
      */
     dispose?(): void
 }
-
-/**
- * An OpenCtx provider wrapper for related links.
- *
- * @template S The type of provider settings.
- */
-export interface LinkedProvider<S extends {} = ProviderSettings> extends Provider, LinkedContext {}
