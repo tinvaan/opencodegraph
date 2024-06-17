@@ -419,6 +419,9 @@ importers:
       '@openctx/schema':
         specifier: workspace:*
         version: link:../schema
+      '@openctx/vscode-lib':
+        specifier: workspace:*
+        version: link:../../client/vscode-lib
       extract-urls:
         specifier: ^1.4.1
         version: 1.4.1
