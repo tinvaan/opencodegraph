@@ -25,7 +25,7 @@
   "dependencies": {
     "@openctx/protocol": "workspace:*",
     "@openctx/schema": "workspace:*",
-    "@openctx/vscode-lib": "workspace:*",
+    "@openctx/vscode-lib": "^0.0.9",
     "extract-urls": "^1.4.1",
     "picomatch": "^3.0.1"
   },
