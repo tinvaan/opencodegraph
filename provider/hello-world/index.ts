@@ -4,9 +4,10 @@ import type {
     AnnotationsResult,
     ItemsParams,
     ItemsResult,
+    LinkedProvider,
+    Mention,
     MetaParams,
     MetaResult,
-    Provider,
     ProviderSettings,
 } from '@openctx/provider'
 
@@ -14,12 +15,14 @@ import type {
  * A demo [OpenCtx](https://openctx.org) provider that annotates every 10th line in every
  * file with "✨ Hello, world!".
  */
-const helloWorld: Provider = {
+const helloWorld: LinkedProvider = {
     meta(params: MetaParams, settings: ProviderSettings): MetaResult {
         return { name: '✨ Hello World!', annotations: {} }
     },
 
     items(params: ItemsParams, settings: ProviderSettings): ItemsResult {
+        const extras = this.explore ? this.explore(params.mention as Mention, settings) : []
+        console.error('extras = ', extras)
         return [
             {
                 title: '✨ Hello, world!',

@@ -1,13 +1,10 @@
+import type { ItemsResult, Mention, ProviderSettings } from '@openctx/protocol'
+import { getClientConfiguration } from '@openctx/vscode-lib'
 
-import type {
-    ItemsResult,
-    Mention,
-    ProviderSettings,
-} from '@openctx/protocol'
-import { Provider } from './provider.js'
-
+import type { Provider } from './provider.js'
 
 const extractUrls = require('extract-urls')
+
 
 export class LinkedContext<S extends {} = ProviderSettings> {
     contextDepth?: number
@@ -23,6 +20,9 @@ export class LinkedContext<S extends {} = ProviderSettings> {
      */
     explore?(mention: Mention, settings: S): ItemsResult {
         // TODO: Check if extracted urls match against any providers
+        const config = getClientConfiguration()
+        console.error('client config = ', config)
+
         const urls = extractUrls(mention.data?.content)
         console.error('urls = ', urls)
         return []

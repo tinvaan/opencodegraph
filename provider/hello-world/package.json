@@ -12,15 +12,13 @@
   "type": "module",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
-  "files": [
-    "dist/index.js",
-    "dist/index.d.ts"
-  ],
+  "files": ["dist/index.js", "dist/index.d.ts"],
   "sideEffects": false,
   "scripts": {
+    "test": "vitest",
     "build": "tsc --build",
     "prepublishOnly": "tsc --build --clean && pnpm run --silent build",
-    "test": "vitest"
+    "bundle": "tsc --build && esbuild --log-level=error --bundle --format=esm --platform=node --outfile=dist/bundle.js index.ts"
   },
   "dependencies": {
     "@openctx/provider": "workspace:*"
